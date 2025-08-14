@@ -9,12 +9,11 @@
     <form action="index.php">
         <p>Bienvenue dans la plateforme de suivi stratégique!!!</p>
         <div class="login">
-        <h1>LOGIN</h1><br>
+        <h1>LOGIN</h1>
         <input type="text" placeholder="Votre Nom"><br><br>    
         <input type="text" placeholder="Votre e-mail"><br><br>
-        
-        <input type="password" placeholder="Mots de passe"><br><br>
-        <section class="checkbox"><input type="checkbox">Se souvenir de moi</section>
+        <input type="password" placeholder="Mots de passe"><br>
+        <input type="checkbox" class="box">Se souvenir de moi
         <br><button>SE CONNECTER</button><br><br>
         <a href="registre.php">Creer un compte</a>
     </div>

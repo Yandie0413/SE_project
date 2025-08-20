@@ -1,0 +1,44 @@
+.login{
+    background-color: #14ffe060;
+    border-radius:25px;
+    text-align: center;
+    padding:25px;
+    margin-top:35px;
+    margin-left:30%;
+    width:35%;
+    height:auto;
+}
+P{
+    font-family: 'Arial black';
+    font-size:45px;
+    text-align:center;
+    animation: gradientAnimation 5s linear infinite;
+}
+@keyframes gradientAnimation{
+    0%{
+        color:blueviolet;
+    }
+    50%{
+        color:#be852e;   
+    }
+    100%{
+        color:chocolate;   
+    }
+   }
+h1{
+    font-family:'Century Schoolbook';
+    font-size:45px;
+}
+input{
+    background-color:white;
+    color:black;
+    width:100%;
+    height:40px;
+    border-radius:5px;
+}
+button{
+    font-family: 'Elephant';
+}
+.box{
+    margin-left:-280px;
+}

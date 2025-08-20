@@ -1,0 +1,89 @@
+/* Fond animé */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #00c6ff, #ff758c);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Animation du dégradé */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Formulaire centré */
+.register-container {
+    background: rgba(255,255,255,0.95);
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    width: 380px;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.register-form h1 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.register-form input, 
+.register-form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.register-form input:focus, 
+.register-form select:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 8px #2575fc;
+    outline: none;
+}
+
+/* Bouton animé */
+.register-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.register-form button:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+}
+
+/* Lien */
+.register-form a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-form a:hover {
+    text-decoration: underline;
+}

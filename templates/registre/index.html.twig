@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+
+{% block body %}
+<div class="register-container">
+    <form class="register-form">
+        <h1>INSCRIPTION</h1>
+
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="tel" name="telephone" placeholder="Numéro de téléphone" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        
+        <label for="genre">Genre</label>
+        <select name="genre" id="genre" required>
+            <option value="">Sélectionnez</option>
+            <option value="femme">Femme</option>
+            <option value="homme">Homme</option>
+            <option value="autre">Autre</option>
+        </select>
+
+        <label for="dob">Date de naissance</label>
+        <input type="date" name="dob" id="dob" required>
+
+        <button type="submit">S’INSCRIRE</button>
+
+        <p>Déjà inscrit ? <a href="/login">Se connecter</a></p>
+    </form>
+</div>
+{% endblock %}

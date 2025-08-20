@@ -1,0 +1,135 @@
+{# Hérite du template principal base.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# Définit le titre de la page qui sera affiché dans <title> #}
+{% block title %}Accueil — Projet de Suivi{% endblock %}
+
+{# Début du bloc body qui sera inséré dans base.html.twig #}
+{% block body %}
+<header class="hero">
+  {# Overlay décoratif pour l'effet visuel #}
+  <div class="hero-overlay"></div>
+
+  {# Contenu principal de la bannière #}
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Le suivi <span class="accent">réinventé</span></h1>
+    <p class="subtitle">Analysez, suivez et anticipez en temps réel avec une interface élégante.</p>
+
+    {# Boutons d’appel à l’action #}
+    <div class="hero-cta">
+      {# Lien vers la page de connexion Symfony #}
+      <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg glow-btn">Découvrir</a>
+      {# Lien qui fait défiler jusqu’à la section "Pourquoi nous ?" #}
+      <a href="{{ path('why') }}" class="btn btn-primary">Pourquoi nous</a>
+
+    </div>
+
+    {# Badges de mise en avant des qualités du projet #}
+    <div class="hero-badges">
+      <span><i data-feather="activity"></i> Temps réel</span>
+      <span><i data-feather="check-circle"></i> Fiabilité</span>
+      <span><i data-feather="zap"></i> Ultra-rapide</span>
+    </div>
+  </div>
+
+  {# Animation de fond de la bannière #}
+  <div class="hero-bg-anim" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</header>
+
+<main id="overview" class="container">                                               
+  {# Section "Mini Dashboard" qui affiche des stats globales #}
+  <section class="cards-grid" data-aos="fade-up">
+
+    {# Carte : total des éléments suivis #}
+    <article class="card">
+      <div class="card-top">
+        <h3><i data-feather="database"></i> Éléments suivis</h3>
+      </div>
+      <div class="card-value">
+        {# Affiche la valeur de stats.itemsTracked envoyée depuis le contrôleur Symfony #}
+        <span class="counter" data-target="{{ stats.itemsTracked }}">{{ stats.itemsTracked }}</span>
+      </div>
+      <p class="card-note">Total d’entités monitorées</p>
+    </article>
+
+    {# Carte : taux de réussite #}
+    <article class="card">
+      <div class="card-top">
+        <h3><i data-feather="trending-up"></i> Taux de réussite</h3>
+      </div>
+      <div class="card-value">
+        {# stats.successRate = pourcentage de succès #}
+        <span class="counter" data-target="{{ stats.successRate }}">{{ stats.successRate }}</span><span>%</span>
+      </div>
+      <p class="card-note">Mises à jour valides</p>
+    </article>
+
+    {# Carte : dernière mise à jour #}
+    <article class="card">
+      <div class="card-top">
+        <h3><i data-feather="clock"></i> Dernière mise à jour</h3>
+      </div>
+      <div class="card-value">
+        {# stats.lastUpdate = horodatage fourni par le contrôleur #}
+        <span>{{ stats.lastUpdate }}</span>
+      </div>
+      <p class="card-note">Horodatage système</p>
+    </article>
+
+    {# Carte : prochaine étape #}
+    <article class="card">
+      <div class="card-top">
+        <h3><i data-feather="flag"></i> Prochaine étape</h3>
+      </div>
+      <div class="card-value">
+        {# stats.nextStep = info sur la roadmap #}
+        <span>{{ stats.nextStep }}</span>
+      </div>
+      <p class="card-note">Roadmap immédiate</p>
+    </article>
+  </section>
+
+  {# Section : aperçu des tâches et activité récente #}
+  <section class="split" data-aos="fade-up" data-aos-delay="100">
+    <div class="panel">
+      <h3><i data-feather="list-check"></i> Tâches</h3>
+      <ul class="tasks">
+        {# Boucle sur le tableau tasks fourni par le contrôleur #}
+        {% for t in tasks %}
+          <li class="task">
+            {# Ajoute une couleur/point selon le statut (ex: en cours, terminé) #}
+            <span class="dot {{ t.status|lower|replace({' ': '-'}) }}"></span>
+            {# Affiche le titre de la tâche #}
+            <span class="title">{{ t.title }}</span>
+            {# Affiche le statut de la tâche #}
+            <span class="status">{{ t.status }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <a class="link" href="#"><i data-feather="arrow-right"></i> Voir toutes les tâches</a>
+    </div>
+
+    <div class="panel">
+      <h3><i data-feather="bar-chart-2"></i> Activité récente</h3>
+      {# Canvas destiné à afficher un petit graphique (via Chart.js par ex.) #}
+      <canvas id="miniChart" height="200"></canvas>
+      <p class="card-note">Tendance hebdomadaire</p>
+    </div>
+  </section>
+</main>
+
+{# Footer du site #}
+<footer class="footer">
+  <div class="container footer-inner">
+    {# Affiche automatiquement l’année en cours #}
+    <span>© {{ "now"|date("Y") }} Projet de Suivi</span>
+    <nav class="footer-nav">
+      <a href="#">Docs</a>
+      <a href="#">Rapports</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</footer>
+{% endblock %}

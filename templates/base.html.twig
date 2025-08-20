@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {# Configure l’affichage sur mobile (responsivité) : largeur = largeur de l’écran, zoom initial = 1 #}
+
+  <title>{% block title %}Suivi — Accueil{% endblock %}</title>
+  {# Titre de la page. Le bloc Twig "title" permet de le remplacer depuis les templates enfants #}
+
+  {# Google Fonts #}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {# Optimisation de chargement : pré-connexion au domaine des polices Google #}
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  {# Chargement de la police "Inter" avec plusieurs graisses (300 à 800) depuis Google Fonts #}
+
+  {# AOS (scroll animations) #}
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  {# Importation de la feuille de style de la librairie AOS (Animation On Scroll) #}
+
+  {# Style minimaliste maison #}
+  <link rel="stylesheet" href="{{ asset('assets/styles.css') }}">
+  {# Chargement du fichier CSS local (dans public/assets/styles.css) via la fonction Twig asset() #}
+
+  {# Feather Icons #}
+  <script defer src="https://unpkg.com/feather-icons"></script>
+  {# Importation de Feather Icons (bibliothèque d’icônes vectorielles). "defer" attend le chargement du HTML #}
+
+  {# Chart.js pour mini-graph #}
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  {# Importation de la librairie Chart.js pour afficher des graphiques #}
+
+  {% block styles %}{% endblock %}
+  {# Bloc Twig optionnel : permet d’ajouter des styles spécifiques dans les templates enfants #}
+</head>
+
+<body>
+  {% block body %}{% endblock %}
+  {# Bloc Twig obligatoire : zone principale où les pages enfants injecteront leur contenu #}
+
+  {# AOS init + script app #}
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  {# Chargement du script JS d’AOS (Animation On Scroll) #}
+
+  <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+  {# Initialisation d’AOS : 
+      - once: true → joue l’animation une seule fois
+      - duration: 700 → durée en ms
+      - easing → courbe d’animation #}
+
+  <script src="{{ asset('assets/app.js') }}"></script>
+  {# Script JavaScript local (dans public/assets/app.js) chargé via asset() #}
+
+  <script>feather.replace();</script>
+  {# Active Feather Icons → remplace les balises <i data-feather="..."> par les vraies icônes #}
+
+  {% block javascripts %}{% endblock %}
+  {# Bloc Twig optionnel : permet d’ajouter du JavaScript supplémentaire depuis les templates enfants #}
+</body>
+</html>
